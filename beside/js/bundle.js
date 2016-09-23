@@ -368,8 +368,8 @@ built_in:"ip eip rip al ah bl bh cl ch dl dh sil dil bpl spl r8b r9b r10b r11b r
 (function() {
   "use strict";
 
-  var str = '<a id="avatar" class="avatar" href="http://forsigner.com/" target="_blank" style="position: absolute;top: 20px;display: inline-block;left: 50%;margin-left:-30px;">' +
-    '<img src="http://forsigner.com/images/avatar.jpg" alt="forsigner" title="go home" style="width: 60px; height: 60px;border-radius: 50%;">' +
+  var str = '<a id="avatar" class="avatar" href="http://swift3t.github.io" target="_blank" style="position: absolute;top: 20px;display: inline-block;left: 50%;margin-left:-30px;">' +
+    '<img src="http://odx25j0zp.bkt.clouddn.com/logo.jpg" alt="bai" title="go home" style="width: 60px; height: 60px;border-radius: 50%;">' +
     '</a>';
 
   var $div = document.createElement('div');
