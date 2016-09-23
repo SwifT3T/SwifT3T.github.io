@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ajax学习笔记(二) | 白</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="web,Ajax,php," />
+  
+
+  <meta name="description" content="Ajax学习笔记(二) POST请求
+上一篇我们讲了GET请求,今天我们聊聊POST请求,其实他们整体代码都差不多,差别在于:
+与POST相比,GET更简单也更快,在大部分情况都能用,然而,在一下情况中,我们使用POST请求:
+
+无法使用缓存文件(更新服务器上的文件或数据库)
+向服务器发送大量数据(POST没有数据量限制)
+发送包含未知字符的用户输入时,POST比GET更稳定也更可靠
+我们在使用P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax学习笔记(二)">
+<meta property="og:url" content="http://yoursite.com/2016/07/08/Ajax2/index.html">
+<meta property="og:site_name" content="白">
+<meta property="og:description" content="Ajax学习笔记(二) POST请求
+上一篇我们讲了GET请求,今天我们聊聊POST请求,其实他们整体代码都差不多,差别在于:
+与POST相比,GET更简单也更快,在大部分情况都能用,然而,在一下情况中,我们使用POST请求:
+
+无法使用缓存文件(更新服务器上的文件或数据库)
+向服务器发送大量数据(POST没有数据量限制)
+发送包含未知字符的用户输入时,POST比GET更稳定也更可靠
+我们在使用P">
+<meta property="og:updated_time" content="2016-09-23T16:44:14.352Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ajax学习笔记(二)">
+<meta name="twitter:description" content="Ajax学习笔记(二) POST请求
+上一篇我们讲了GET请求,今天我们聊聊POST请求,其实他们整体代码都差不多,差别在于:
+与POST相比,GET更简单也更快,在大部分情况都能用,然而,在一下情况中,我们使用POST请求:
+
+无法使用缓存文件(更新服务器上的文件或数据库)
+向服务器发送大量数据(POST没有数据量限制)
+发送包含未知字符的用户输入时,POST比GET更稳定也更可靠
+我们在使用P">
+
+  
+
+  
+    <link rel="icon" href="http://odx25j0zp.bkt.clouddn.com/logo.jpg">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82ac814ff3461dc6fde6b56598595c92";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">Ajax学习笔记(二) POST请求</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Ajax2" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Ajax学习笔记(二)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.08</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bai</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Ajax/">Ajax</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1>Ajax学习笔记(二) POST请求</h1>
+<p>上一篇我们讲了GET请求,今天我们聊聊POST请求,其实他们整体代码都差不多,差别在于:</p>
+<p><strong><em>与POST相比,GET更简单也更快,在大部分情况都能用,然而,在一下情况中,我们使用POST请求:</em></strong></p>
+<ol>
+<li>无法使用缓存文件(更新服务器上的文件或数据库)</li>
+<li>向服务器发送大量数据(POST没有数据量限制)</li>
+<li>发送包含未知字符的用户输入时,POST比GET更稳定也更可靠</li>
+<li>我们在使用POST请求的时候需要设置请求头</li>
+</ol>
+<p>下面我们看封装好的代码
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"> &lt;body&gt;</div><div class="line">&lt;p id=&quot;p&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;button id=&quot;btn1&quot;&gt;发送请求&lt;/button&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">function httpPost(url,postBody,successCallback,errorCallback)&#123;</div><div class="line">    //1.获取xmlhttprequest对象</div><div class="line">    var xhr = null;</div><div class="line">    if (window.XMLHttpRequest) &#123;</div><div class="line">        xhr = new XMLHttpRequest();</div><div class="line">    &#125;else&#123;</div><div class="line">        xhr = new ActiveXObject(&quot;Microsoft.XMLHttp&quot;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //2.配置对象信息</div><div class="line">    xhr.open(&quot;POST&quot;,url,true);</div><div class="line">    //3.设置请求头(如果使用post请求,请求头一定要设置)</div><div class="line">    xhr.setRequestHeader(&quot;Content-Type&quot;,&quot;application/x-www-form-urlencoded; charset=gb2312&quot;);</div><div class="line">    //4.发送请求</div><div class="line">    xhr.send(postBody);</div><div class="line"></div><div class="line">    //监听状态改变</div><div class="line">    xhr.onreadystatechange = function()&#123;</div><div class="line">        if (xhr.readyState == 4) &#123;</div><div class="line">            if (xhr.status == 200) &#123;</div><div class="line">                if (successCallback) &#123;</div><div class="line">                    successCallback(xhr.responseText);</div><div class="line">                &#125;</div><div class="line">            &#125;else&#123;</div><div class="line">                if (errorCallback) &#123;</div><div class="line">                    errorCallback(xhr.statusText);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var btn = document.getElementById(&apos;btn1&apos;);</div><div class="line">var p = document.getElementById(&apos;p&apos;);</div><div class="line">btn.onclick = function()&#123;</div><div class="line">    var url = &quot;http://localhost/Ajax-1/post.php&quot;;</div><div class="line">    var postBody = &quot;username=zhangsan&amp;password=123456&quot;;</div><div class="line">    httpPost(url,postBody,successCallback,errorCallback);</div><div class="line">&#125;</div><div class="line">function successCallback(responseText)&#123;</div><div class="line">    p.innerHTML  = responseText;</div><div class="line">&#125;</div><div class="line">function errorCallback(statusText)&#123;</div><div class="line">    p.innerHTML = statusText;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p><strong><em>下面是php代码</em></strong>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line">$username = $_POST[&quot;username&quot;];</div><div class="line">$password = $_POST[&quot;password&quot;];</div><div class="line">echo &quot;你的用户名是&#123;$username&#125;,密码是&#123;$password&#125;&quot;;</div><div class="line">?&gt;</div></pre></td></tr></table></figure></p>
+<p>因为和GET请求类似,所以我们不多解释代码部分了。</p>
+<hr>
+<p>转载请注明来自<a href="https://swift3t.github.io/" target="_blank" rel="external">@白的博客swift3t.github.io</a></p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">联系@白</span>
+      <div class="donation-body">
+        <div class="tip text-center">联系@白</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/wechat.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/qq.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="http://yoursite.com/2016/07/08/Ajax2/index.html" data-title="Ajax学习笔记(二)" data-url="http://yoursite.com/2016/07/08/Ajax2/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"Swift3t"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

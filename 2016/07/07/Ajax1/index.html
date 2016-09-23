@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Ajax学习笔记(一) | 白</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="web,Ajax,php," />
+  
+
+  <meta name="description" content="Ajax学习笔记(一) GET请求
+我们为什么要学习Ajax呢,它有什么好处.举个例子,如下图,如果没有Ajax的话下面带感叹号的那句话是不会再你输入完手机号立马提示的,它会在等你输入完所有的东西点击提交之后才会提醒你哪里错了,并把整个页面重新刷新了,这样对用户体验并不好.所以才有了如今的Ajax的普及.
+
+
+在学习Ajax之前,你需要对下面的知识有基本了解
+12341.HTML/XHTML2.C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax学习笔记(一)">
+<meta property="og:url" content="http://yoursite.com/2016/07/07/Ajax1/index.html">
+<meta property="og:site_name" content="白">
+<meta property="og:description" content="Ajax学习笔记(一) GET请求
+我们为什么要学习Ajax呢,它有什么好处.举个例子,如下图,如果没有Ajax的话下面带感叹号的那句话是不会再你输入完手机号立马提示的,它会在等你输入完所有的东西点击提交之后才会提醒你哪里错了,并把整个页面重新刷新了,这样对用户体验并不好.所以才有了如今的Ajax的普及.
+
+
+在学习Ajax之前,你需要对下面的知识有基本了解
+12341.HTML/XHTML2.C">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/2360985-3d334ba2b49a1a0d.png">
+<meta property="og:updated_time" content="2016-09-23T16:36:53.947Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ajax学习笔记(一)">
+<meta name="twitter:description" content="Ajax学习笔记(一) GET请求
+我们为什么要学习Ajax呢,它有什么好处.举个例子,如下图,如果没有Ajax的话下面带感叹号的那句话是不会再你输入完手机号立马提示的,它会在等你输入完所有的东西点击提交之后才会提醒你哪里错了,并把整个页面重新刷新了,这样对用户体验并不好.所以才有了如今的Ajax的普及.
+
+
+在学习Ajax之前,你需要对下面的知识有基本了解
+12341.HTML/XHTML2.C">
+<meta name="twitter:image" content="http://odx25j0zp.bkt.clouddn.com/2360985-3d334ba2b49a1a0d.png">
+
+  
+
+  
+    <link rel="icon" href="http://odx25j0zp.bkt.clouddn.com/logo.jpg">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82ac814ff3461dc6fde6b56598595c92";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">Ajax学习笔记(一) GET请求</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">什么是AJAX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">实现AJAX异步处理的必要条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">规定请求的类型,向服务器发送请求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">监听xhr的状态改变事件</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Ajax1" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Ajax学习笔记(一)</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.07</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bai</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Ajax/">Ajax</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1>Ajax学习笔记(一) GET请求</h1>
+<p>我们为什么要学习Ajax呢,它有什么好处.举个例子,如下图,如果没有Ajax的话下面带感叹号的那句话是不会再你输入完手机号立马提示的,它会在等你输入完所有的东西点击提交之后才会提醒你哪里错了,并把整个页面重新刷新了,这样对用户体验并不好.所以才有了如今的Ajax的普及.</p>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/2360985-3d334ba2b49a1a0d.png" alt="enter image description here"></p>
+<ul>
+<li>在学习Ajax之前,你需要对下面的知识有基本了解
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1.HTML/XHTML</div><div class="line">2.CSS</div><div class="line">3.JavaScript/DOM</div><div class="line">4.php(数据库连接)</div></pre></td></tr></table></figure></li>
+</ul>
+<h2>什么是AJAX</h2>
+<p>AJAX 通过在后台与服务器进行少量数据交换,AJAX可以使网页实现异步更新,意味着可以在不重新加载整个网页的情况下,对网页的某部分进行跟新.</p>
+<p>我们先说一下异步和同步:</p>
+<p><code>同步:客户端发送请求-&gt;服务器处理-&gt;客户端等待-&gt;服务端返回响应</code></p>
+<p><code>异步:客户端发送请求-&gt;服务器处理-&gt;响应-&gt;页面载入</code></p>
+<h2>实现AJAX异步处理的必要条件</h2>
+<p>创建 XMLHttpRequest对象
+为了应对所有的现代浏览器,包括IE5和IE6,检查浏览器是否支持XMLHttpRequest对象,如果支持,则创建XMLHttpRequest对象,如果不支持,则创建ActiveXOject</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var xhr = null;</div><div class="line">    //当前浏览器拥有window.XMLHttpRequest属性</div><div class="line">    if (window.XMLHttpRequest) &#123;//for IE 7+ 谷歌等主流浏览器</div><div class="line">        //那么通过new XMLHttpRequest来创建对象</div><div class="line">        xhr = new XMLHttpRequest();</div><div class="line">    &#125;else&#123;//for IE 5 and IE 6</div><div class="line">        //否则通过new ActiveXObject来创建对象</div><div class="line">        xhr = new ActiveXObject(&quot;Microsoft.XMLHttp&quot;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h2>规定请求的类型,向服务器发送请求</h2>
+<p>我们使用XMLHttpRequest对象的open()和send()方法来实现这个功能.</p>
+<p>请求的方式有两种(我们常用的)GET和POST,我们首先来说一下GET.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xhr.open(&quot;GET&quot;,&quot;http://localhost/Ajax-1/get.php?username=zhangsan&amp;password=123456&quot;,true);</div><div class="line">//发送请求</div><div class="line">xhr.send();</div></pre></td></tr></table></figure></p>
+<h2>监听xhr的状态改变事件</h2>
+<p>当请求被发送到服务器时,我们需要执行一些基于响应的任务.所以我们要用到onreadystatechange事件.</p>
+<p>onreadystatechange:存储函数(或函数名),每当readyState属性改变时,就会调用该函数.</p>
+<p>readyState:存有XMLHttpRequest的状态,从0到4的变化.</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">0:当XMLHttpRequest对象创建之后,但还未使用open方法</div><div class="line">1:已经设置了请求信息,但尚未发送请求</div><div class="line">2:已经发送请求给服务器,但服务器尚未回应</div><div class="line">3:当服务器收到请求之后,并且做了回应(注意:这个状态可能会出现多次)</div><div class="line">4:当服务器完成全部数据的回应之后,表示请求成功(结束)</div><div class="line"></div><div class="line">status;</div><div class="line">200:(OK) 表示响应就绪</div><div class="line">404:为找到页面</div><div class="line"></div><div class="line">//监听xhr的状态改变事件</div><div class="line">    xhr.onreadystatechange = function()&#123;</div><div class="line">        // alert(xhr.readyState);</div><div class="line">        //判断是否请求成功</div><div class="line">        if (xhr.readyState == 4) &#123;</div><div class="line">            //判断当前请求的状态码</div><div class="line">            if (xhr.status == 200) &#123;</div><div class="line">                //responseText获得字符串形式的响应数据</div><div class="line">                p.innerHTML = xhr.responseText;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>body部分代码如下:</p>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">&lt;p id=&quot;p&quot;&gt;&lt;/p&gt;</div><div class="line">&lt;button id=&quot;btn1&quot;&gt;发送请求&lt;/button&gt;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>ok,下一节我们继续学习POST请求。 😏</p>
+<hr>
+<p>转载请注明来自<a href="https://swift3t.github.io/" target="_blank" rel="external">@白的博客swift3t.github.io</a></p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">联系@白</span>
+      <div class="donation-body">
+        <div class="tip text-center">联系@白</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/wechat.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/qq.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="http://yoursite.com/2016/07/07/Ajax1/index.html" data-title="Ajax学习笔记(一)" data-url="http://yoursite.com/2016/07/07/Ajax1/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"Swift3t"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
