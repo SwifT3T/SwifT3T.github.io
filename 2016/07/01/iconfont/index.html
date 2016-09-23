@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何搞定网页中那些烦人的图标 | 白</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="web,icon," />
+  
+
+  <meta name="description" content="如何搞定网页中那些烦人的图标
+浏览过网页的人都知道，网页中出了包含文字，图片等，通常情况下还包含一些小的图标，这些小图标对于切图人员来说可是一个大麻烦，不但切图工序麻烦，还会让网页中增加许多图片请求，即使是将图片都合成到一张图上，增加了图片合成的工序不说，还得挨个去量每个图标的position，如果一个网页中有许多小图标，我想切图人员必然会抓狂。今天我就来给大家分享一下如何搞定网页中那些烦人的图标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何搞定网页中那些烦人的图标">
+<meta property="og:url" content="http://yoursite.com/2016/07/01/iconfont/index.html">
+<meta property="og:site_name" content="白">
+<meta property="og:description" content="如何搞定网页中那些烦人的图标
+浏览过网页的人都知道，网页中出了包含文字，图片等，通常情况下还包含一些小的图标，这些小图标对于切图人员来说可是一个大麻烦，不但切图工序麻烦，还会让网页中增加许多图片请求，即使是将图片都合成到一张图上，增加了图片合成的工序不说，还得挨个去量每个图标的position，如果一个网页中有许多小图标，我想切图人员必然会抓狂。今天我就来给大家分享一下如何搞定网页中那些烦人的图标">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/1.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/22.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/3.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/4.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/5.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/6.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/7.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/8.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/9.jpg">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/10.jpg">
+<meta property="og:updated_time" content="2016-09-23T14:47:23.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何搞定网页中那些烦人的图标">
+<meta name="twitter:description" content="如何搞定网页中那些烦人的图标
+浏览过网页的人都知道，网页中出了包含文字，图片等，通常情况下还包含一些小的图标，这些小图标对于切图人员来说可是一个大麻烦，不但切图工序麻烦，还会让网页中增加许多图片请求，即使是将图片都合成到一张图上，增加了图片合成的工序不说，还得挨个去量每个图标的position，如果一个网页中有许多小图标，我想切图人员必然会抓狂。今天我就来给大家分享一下如何搞定网页中那些烦人的图标">
+<meta name="twitter:image" content="http://odx25j0zp.bkt.clouddn.com/1.jpg">
+
+  
+
+  
+    <link rel="icon" href="http://odx25j0zp.bkt.clouddn.com/logo.jpg">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82ac814ff3461dc6fde6b56598595c92";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">如何搞定网页中那些烦人的图标</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-iconfont" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">如何搞定网页中那些烦人的图标</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.01</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bai</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/web前端/">web前端</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1>如何搞定网页中那些烦人的图标</h1>
+<p>浏览过网页的人都知道，网页中出了包含文字，图片等，通常情况下还包含一些小的图标，这些小图标对于切图人员来说可是一个大麻烦，不但切图工序麻烦，还会让网页中增加许多图片请求，即使是将图片都合成到一张图上，增加了图片合成的工序不说，还得挨个去量每个图标的position，如果一个网页中有许多小图标，我想切图人员必然会抓狂。今天我就来给大家分享一下如何搞定网页中那些烦人的图标。</p>
+<p>我们先来看看我到底说的是那些图标吧。</p>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/1.jpg" alt="enter image description here"></p>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/22.jpg" alt="enter image description here"></p>
+<p>看到了吧，就这些小图标。在一个网页中如果有十几二十个这样的小图标，我觉得切图人员的内心必然是崩溃的，边切图心里肯定边骂设计师是傻逼呢。那我们到底如何轻松的解决这件事呢？</p>
+<ol>
+<li>登陆www.iconfont.cn</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/3.jpg" alt="enter image description here"></p>
+<ol start="2">
+<li>点击登录，用新浪微博账号登陆</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/4.jpg" alt="enter image description here"></p>
+<ol start="3">
+<li>在首页搜索框中搜索我们需要的图标</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/5.jpg" alt="enter image description here"></p>
+<ol start="4">
+<li>回车，会进入到搜索结果页面，如下：</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/6.jpg" alt="enter image description here"></p>
+<ol start="5">
+<li>找到我们需要的图标，点击会被添加到暂存架</li>
+</ol>
+<ol start="6">
+<li>点击暂存架</li>
+</ol>
+<ol start="7">
+<li>添加到历史项目或者新项目</li>
+</ol>
+<ol start="8">
+<li>如果是加入历史项目，则点击“存储为历史项目”，创建新项目则点击“存储为新项目”，输入名字之后点击存储。</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/7.jpg" alt="enter image description here"></p>
+<ol start="9">
+<li>存储之后，跳转到项目页面</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/8.jpg" alt="enter image description here"></p>
+<ol start="10">
+<li>鼠标放到“获取在线链接”上，会显示“生成在线链接”。</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/9.jpg" alt="enter image description here"></p>
+<ol start="11">
+<li>复制生成的链接，放到css文件里</li>
+</ol>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/10.jpg" alt="enter image description here"></p>
+<ol start="12">
+<li>点击“前端应用帮助”，会有详细的使用文档，这里我就不详细介绍了。</li>
+</ol>
+<p>注意事项：</p>
+<p>每次添加新的图标之后，一定要重新生成在线链接，并将新的在线链接复制替换之前css文件的代码。</p>
+<p>有了它，一定会让你眼前一亮，省掉了很多切图的麻烦，心里有没有爽一点？</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">联系@白</span>
+      <div class="donation-body">
+        <div class="tip text-center">联系@白</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/wechat.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/qq.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="http://yoursite.com/2016/07/01/iconfont/index.html" data-title="如何搞定网页中那些烦人的图标" data-url="http://yoursite.com/2016/07/01/iconfont/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"Swift3t"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
