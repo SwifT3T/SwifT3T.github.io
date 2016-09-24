@@ -1,0 +1,676 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>奇点网络-服务项目</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="css/blue.css" rel="stylesheet" type="text/css" media="all" />
+<!----font-Awesome----->
+   	<link rel="stylesheet" href="fonts/css/font-awesome.min.css">
+<!----font-Awesome----->
+<!-- start plugins -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";background:#ddd;}
+
+/* leftsead */
+#leftsead{width:131px;height:143px;position:fixed;top:258px;right:0px;}
+*html #leftsead{margin-top:258px;position:absolute;top:expression(eval(document.documentElement.scrollTop));}
+#leftsead li{width:131px;height:60px;}
+#leftsead li img{float:right;}
+#leftsead li a{height:49px;float:right;display:block;min-width:47px;max-width:131px;}
+#leftsead li a .shows{display:block;}
+#leftsead li a .hides{margin-right:-143px;cursor:pointer;cursor:hand;}
+#leftsead li a.youhui .hides{display:none;position:absolute;right:190px;top:2px;}
+</style>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- Owl Carousel Assets -->
+<link href="css/owl.carousel.css" rel="stylesheet">
+<script src="js/owl.carousel.js"></script>
+<script src="js/getParam.js"></script>
+		<script>
+			$(document).ready(function() {
+
+				$("#owl-demo").owlCarousel({
+					items : 4,
+					lazyLoad : true,
+					autoPlay : true,
+					navigation : true,
+					navigationText : ["", ""],
+					rewindNav : false,
+					//scrollPerPage : false,
+					pagination : false,
+					paginationNumbers : false,
+				});
+
+			});
+		</script>
+		<!-- //Owl Carousel Assets -->
+        
+<!-- start circle -->
+<script>
+(function($){
+	$.fn.percentPie = function(options){
+
+		var settings = $.extend({
+			width: 100,
+			trackColor: "EEEEEE",
+			barColor: "E2534B",
+			barWeight: 30,
+			startPercent: 0,
+			endPercent: 1,
+			fps: 60
+		}, options);
+
+		this.css({
+			width: settings.width,
+			height: settings.width
+		});
+
+		var	that = this,
+			hoverPolice = false,
+			canvasWidth = settings.width,
+			canvasHeight = canvasWidth,
+			id = $('canvas').length,
+			canvasElement = $('<canvas id="'+ id +'" width="' + canvasWidth + '" height="' + canvasHeight + '"></canvas>'),
+			canvas = canvasElement.get(0).getContext("2d"),
+			centerX = canvasWidth/2,
+			centerY = canvasHeight/2,
+			radius = settings.width/2 - settings.barWeight/2;
+			counterClockwise = false,
+			fps = 1000 / settings.fps,
+			update = .01;
+			this.angle = settings.startPercent;
+
+		this.drawArc = function(startAngle, percentFilled, color){
+			var drawingArc = true;
+			canvas.beginPath();
+			canvas.arc(centerX, centerY, radius, (Math.PI/180)*(startAngle * 360 - 90), (Math.PI/180)*(percentFilled * 360 - 90), counterClockwise);
+			canvas.strokeStyle = color;
+			canvas.lineWidth = settings.barWeight;
+			canvas.stroke();
+			drawingArc = false;
+		}
+
+		this.fillChart = function(stop){
+			var loop = setInterval(function(){
+				hoverPolice = true;
+				canvas.clearRect(0, 0, canvasWidth, canvasHeight);
+
+				that.drawArc(0, 360, settings.trackColor);
+				that.angle += update;
+				that.drawArc(settings.startPercent, that.angle, settings.barColor);
+
+				if(that.angle > stop){
+					clearInterval(loop);
+					hoverPolice = false;
+				}
+			}, fps);
+		}
+
+		this.mouseover(function(){
+			if(hoverPolice == false){
+				that.angle = settings.startPercent;
+				that.fillChart(settings.endPercent);
+			}
+		});
+
+		this.fillChart(settings.endPercent);
+		this.append(canvasElement);
+		return this;
+	}
+}(jQuery));
+
+$(document).ready(function() {
+
+	$('.google').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "76C7C0",
+		barWeight: 20,
+		endPercent: .9,
+		fps: 60
+	});
+  
+  $('.moz').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "76C7C0",
+		barWeight: 20,
+		endPercent: .75,
+		fps: 60
+	});
+  
+  $('.safari').percentPie({
+		width: 100,
+		trackColor: "E2534B",
+		barColor: "#76C7C0",
+		barWeight: 20,
+		endPercent: .5,
+		fps: 60
+	});
+	
+	
+
+	window.setTimeout("scroTo()",500);
+});
+function scroTo(){	
+	var s=parseInt(getUrlParam("s"));
+	$(document.body).scrollTop($(".price_block").eq(s).offset().top);
+	$(".price").eq(s).css("backgroundColor","#E2534B");
+	
+}
+</script>
+</head>
+<body style="text-align:center">
+<div class="header_bg">
+<div class="container">
+	<div class="header">
+		<div class="logo">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/logo.png" alt="奇点电商"/>
+		</div>
+		<div class="h_menu">
+		<a id="touch-menu" class="mobile-menu" href="#">Menu</a>
+		<nav>
+		<ul class="menu list-unstyled"><br/><br/>
+			<li><a href="index.html">首页</a></li>
+                        <li class="activate"><a href="service.html">服务项目</a></li>
+			<li><a href="customer.html">客户案例</a>
+                        <li><a href="appraise.html">客户评价</a>
+			<li><a href="recruit.html">公司招聘</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+			<li><a href="contact.html">联系我们</a></li>
+		</ul>
+		</nav>
+		<script src="js/menu.js" type="text/javascript"></script>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+<div class="main_bg"><!-- start main -->
+<div class="container">
+	<div class="main_grid1">
+		<h3 class="style pull-left">服务项目</h3>
+		<ol class="breadcrumb pull-right">
+		  <li><a href="index.html">首页</a></li>
+		  <li class="active">服务项目</li>
+		</ol>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+<div class="main_btm1"><!-- start main_btm1 -->
+<div class="container">
+	<div class="main about span_of_3">
+    <h3 style="text-align:left;">服务项目简介</h3>
+      		<p class="para" style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网络时代是消费市场的全新变革，消费习惯的改变，消费人群的细分化和多元化，商家不得不从新寻找新出路，挖掘更大的市场。以淘宝、京东等为代表的电商平台，带来了新消费，让潜在客户的群体不断壮大。北京奇点网络技术有限公司是为客户提供全方位的立体式电子商务服务，通过专业技术人员组建的服务团队，提供高品质的商品管理、店铺管理、客户管理，有效的提升转化率,尽可能的为商家构筑优势，创造价值。我们专注为淘宝卖家提供以直通车优化为核心的电子商务外包服务，从品牌策划、店铺设计、定价推广、再到广告投放，我们以领先的专业技术为客户服务，提供给客户一站式的电商解决方案，快速提升卖家的品牌形象、店铺流量、转化率，并有效的控制投资风险。</p>
+	</div>
+    <hr/>
+	<h4 style="color:#62A09D;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直通车推广</h4>
+	<p class="para" style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;淘宝直通车服务项目：1.直通车推广方案2.推广宝贝分析与选择3.推广宝贝优化4.关键词选择与出价5.关键词监控、分析、调整6.数据报表分析与改进计划。</p>
+	<h4 style="color:#62A09D;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店铺代运营</h4>
+	<p class="para" style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为品牌商提供全面的、专业的一站式整合营销。从行业分析、品牌定位、再到产品资源的整合。店铺的设计及建设再到电子商务战略规划及实施。提供系统的淘宝电商平台合作计划，由专业的技术团队为您击破线上操作的各个环节。</p>
+	<h4 style="color:#62A09D;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;电商培训</h4>
+	<p class="para" style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为已经和准备在淘宝、天猫等电子商务平台开店的商家提供最实用的电商培训，包括开店须知、店铺引流、客服技巧、CRM管理、整店运营等多维度培训和指导。</p>
+	<h4 style="color:#62A09D;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;店铺装修</h4>
+	<p class="para" style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通关对店标、店铺公告、宝贝分类标签、产品描述模板、店铺介绍等专业化设计和美化，提示店铺美观度，增加顾客在你的网店停留时间、增加的诱惑力、增强网店的形象、打造网店强势品牌。</p>
+	<h4 style="color:#62A09D;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;微信运营</h4>
+	<p class="para" style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;超过6亿网民都在使用微信，企业通过在微信中实现自己想要的功能，进而和用户产生互动，是企业在当今推广第一选择。我们专业为您运营企业微信账号，精准推送相关信息。</p>
+	<h4 style="color:#62A09D;text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手机APP</h4>
+	<p class="para" style="text-align:left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;互联网的未来在移动端。奇点手机终端团队是中国市场领先的移动应用供应商，与多家大型企业进行相关合作，为您在移动互联网开发市场提供最便捷最高效服务。</p><br/>
+	
+	
+	
+
+</div>
+</div>	
+
+<div class="main_btm2"><!-- start main_btm2 -->
+<div class="container">
+<div class="pricing2"><!-- start pricing2 -->
+		<h5>服务项目价格</h5>
+		<h6>我们为您罗列了部分服务价格，如想了解更多信息请联系我们</h6>
+		<ul class="pricing_table list-unstyled">
+		<li class="price_block">
+			<h3>直通车推广</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>制订推广方案</li>
+				<li>宝贝选择</li>
+				<li>宝贝优化</li>
+				<li>关键词出价</li>
+				<li>关键词调整</li>
+				<li>数据分析及改进</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2036679687&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2036679687:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+			</div>
+			<div class="clearfix"></div>
+		</li>
+		<li class="price_block">
+			<h3>店铺代运营</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+					
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>行业分析</li>
+				<li>品牌定位</li>
+				<li>产品资源</li>
+				<li>店铺装修</li>
+				<li>店铺引流及推广</li>
+				<li>电子商务战略规划及实施</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&site=cntaobao&s=1&charset=utf-8" alt="点击这里咨询" /></a>
+			</div>
+			<div class="clearfix"></div>
+		</li>
+		<li class="price_block">
+			<h3>电商培训</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+					
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>开店须知</li>
+				<li>店铺引流</li>
+				<li>客服技巧</li>
+				<li>CRM管理</li>
+                		<li>整店运营</li>
+              			<li>······</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&site=cntaobao&s=1&charset=utf-8" alt="点击这里咨询" /></a>
+			</div>
+			<div class="clearfix"></div>
+		</li>
+		<li class="price_block">
+			<h3>更多服务···</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2036679687&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2036679687:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+			</div>
+			<div class="clearfix"></div>
+		</li>
+        <li class="price_block">
+			<h3>店铺装修</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+					
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>店铺风格定位</li>
+				<li>店标设计</li>
+				<li>店铺文案</li>
+				<li>宝贝分类标签</li>
+				<li>产品描述模板</li>
+				<li>专业美化</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2036679687&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2036679687:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+			</div>
+			<div class="clearfix"></div>
+		</li>
+        <li class="price_block">
+			<h3>微信运营</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+					
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>图文信息推送</li>
+				<li>提高粉丝数量</li>
+				<li>粉丝互动</li>
+				<li>增加用户黏性</li>
+				<li>用户行为分析</li>
+				<li>······</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&site=cntaobao&s=1&charset=utf-8" alt="点击这里咨询" /></a>
+			</div>
+			<div class="clearfix"></div>
+		</li>
+        <li class="price_block">
+			<h3>手机APP</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+					
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>APP开发服务</li>
+				<li>APP制作平台</li>
+				<li>APP下载服务</li>
+				<li>APP运营服务</li>
+				<li>APP推广服务</li>
+				<li>······</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&siteid=cntaobao&status=1&charset=utf-8"><img border="0" src="http://amos.alicdn.com/realonline.aw?v=2&uid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&site=cntaobao&s=1&charset=utf-8" alt="点击这里咨询" /></a>
+			</div>
+		</li>
+        <li class="price_block">
+			<h3>更多服务···</h3>
+			<div class="price">
+				<div class="price_figure">
+					<span class="price_number">￥0.00</span>
+					
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+				<li>······</li>
+			</ul>
+			<div class="pricing_btn">
+				<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2036679687&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2036679687:41" alt="点击这里给我发消息" title="点击这里给我发消息"/></a>
+			</div>
+		</li>
+        
+		<div class="clearfix"></div>
+	</ul>
+	<ul class="skeleton pricing_table list-unstyled" style="margin-top: 100px; overflow: hidden;">
+		<li class="label" style="margin: 0 none;">ul.pricing_table</li>
+		<li class="price_block">
+			<span class="label">li.price_block</span>
+			<h3><span class="label">h3</span></h3>
+			<div class="price">
+				<span class="label">div.price</span>
+				<div class="price_figure">
+					<span class="label">div.price_figure</span>
+					<span class="price_number">
+						<span class="label">span.price_number</span>
+					</span>
+					<span class="price_tenure">
+						<span class="label">span.price_tenure</span>
+					</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li class="label">ul.features</li>
+				<br /><br /><br />
+			</ul>
+			<div class="pricing_btn">
+				<span class="label">div.pricing_btn</span>
+			</div>
+		</li>
+		<li class="price_block" style="opacity: 0.5;">
+			<span class="label">li.price_block</span>
+			<h3><span class="label">h3</span></h3>
+			<div class="price">
+				<span class="label">div.price</span>
+				<div class="price_figure">
+					<span class="label">div.price_figure</span>
+					<span class="price_number">
+						<span class="label">span.price_number</span>
+					</span>
+					<span class="price_tenure">
+						<span class="label">span.price_tenure</span>
+					</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li class="label">ul.features</li>
+				<br /><br /><br />
+			</ul>
+			<div class="footer">
+				<span class="label">div.pricing_btn</span>
+			</div>
+		</li>
+		<li class="price_block" style="opacity: 0.25;">
+			<span class="label">li.price_block</span>
+			<h3><span class="label">h3</span></h3>
+			<div class="price">
+				<span class="label">div.price</span>
+				<div class="price_figure">
+					<span class="label">div.price_figure</span>
+					<span class="price_number">
+						<span class="label">span.price_number</span>
+					</span>
+					<span class="price_tenure">
+						<span class="label">span.price_tenure</span>
+					</span>
+				</div>
+			</div>
+			<ul class="features list-unstyled">
+				<li class="label">ul.features</li>
+				<br /><br /><br />
+			</ul>
+			<div class="pricing_btn">
+				<span class="label">div.pricing_btn</span>
+			</div>
+		</li>
+		<div class="clear"></div>
+	</ul>
+	<div class="clear"></div>
+	</div><!-- end pricing2 -->
+	<div class="cursual"><!--  start cursual  -->
+		<h4>我们的合作伙伴：<span class="line"></span></h4>
+	</div>
+	<div id="owl-demo" class="owl-carousel"><!----start-img-cursual---->
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c1.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c2.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c3.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c4.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c5.png" alt="Lazy Owl Image">
+			</div>
+		</div><div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c1.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c2.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c3.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c4.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c5.png" alt="Lazy Owl Image">
+			</div>
+		</div><div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c1.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c2.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c3.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c4.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		<div class="item">
+			<div class="cau_left">
+				<img class="lazyOwl" data-src="images/c5.png" alt="Lazy Owl Image">
+			</div>
+		</div>
+		
+	</div><!----//End-img-cursual---->
+</div>
+</div>
+<div id="leftsead">
+	<ul>
+                <li><a target="_blank"  href="http://wpa.qq.com/msgrd?v=3&uin=2510897566&site=qq&menu=yes"><img src="images/right/ll04.png" width="131" height="49" class="hides"/><img src="images/right/l04.png" width="47" height="49" class="shows" /></a></li>
+		<li><a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid=%E5%A5%87%E7%82%B9%E7%94%B5%E5%95%86&siteid=cntaobao&status=1&charset=utf-8"><img src="images/right/ll01.png" width="131" height="49" class="hides"/><img src="images/right/l01.png" width="47" height="49" class="shows" /></a></li>
+                <li><a class="youhui"><img src="images/right/l02.png" width="47" height="49" class="shows" /><img src="images/right/youhui.png" width="auto" height="auto" class="hides" usemap="#taklhtml"/><map name="taklhtml"><area shape="rect" coords="26,273,115,300 "/></map></a></li>
+		<li><a href="contact.html"><img src="images/right/ll05.png" width="131" height="49" class="hides"/><img src="images/right/l05.png" width="47" height="49" class="shows" /></a></li>
+		
+		
+		
+		<li><a id="top_btn"><img src="images/right/ll06.png" width="131" height="49" class="hides"/><img src="images/right/l06.png" width="47" height="49" class="shows" /></a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+	$("#leftsead a").hover(function(){
+		if($(this).prop("className")=="youhui"){
+			$(this).children("img.hides").show();
+		}else{
+			$(this).children("img.hides").show();
+			$(this).children("img.shows").hide();
+			$(this).children("img.hides").animate({marginRight:'0px'},'slow'); 
+		}
+	},function(){ 
+		if($(this).prop("className")=="youhui"){
+			$(this).children("img.hides").hide('slow');
+		}else{
+			$(this).children("img.hides").animate({marginRight:'-143px'},'slow',function(){$(this).hide();$(this).next("img.shows").show();});
+		}
+	});
+
+	$("#top_btn").click(function(){if(scroll=="off") return;$("html,body").animate({scrollTop: 0}, 600);});
+
+});
+</script>
+<div class="footer_bg"><!-- start footer -->
+<div class="container">
+	<div class="footer">
+		<div class="col-md-4 footer1_of_3">
+			<div class="f_logo">
+				<a href="index.html"><img src="images/logo.png" alt=""/></a>
+			</div>		
+			<p class="f_para">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;北京奇点网络技术有限公司是一家专业从事电子商务服务的公司，我们紧跟电子商务市场的脚步，专注为淘宝、天猫等卖家提供各种各样的电子商务外包服务。从直通车服务，店铺整体托管，营销及活动策划，无线端服务等多方面提供给客服一流的电商解决方案，帮助卖家提升销量，并有效的控制风险，不断致力于为卖家提供更好的服务。</p>
+			<p>联系电话：&nbsp;<span>010-80574356</span></p>
+			<span class="">Email:&nbsp;<a href="mailto:qidiantech@163.com">qidiantech@163.com</a></span>
+		</div>
+		<div class="col-md-2 footer1_of_3">
+			<h4>友情链接</h4>
+			<ul class="list-unstyled f_list">
+				<li><a href="http://www.taobao.com">淘宝网</a></li>
+                                <li><a href="https://www.alipay.com">支付宝</a></li>
+				<li><a href="http://www.tmall.com/">天猫商城</a></li>
+                                <li><a href="http://www.1688.com/">阿里巴巴</a></li>
+				<li><a href="http://www.jd.com/">京东商城</a></li>
+				
+			</ul>
+		</div>
+		<div class="col-md-2 footer1_of_3">
+			<h4>合作伙伴</h4>
+			<ul class="list-unstyled f_list">
+				<li><a href="http://www.taobao.com">淘宝网</a></li>
+                                <li><a href="https://www.alipay.com">支付宝</a></li>
+				<li><a href="http://www.tmall.com/">天猫商城</a></li>
+                                <li><a href="http://www.zhongsou.com/">中搜网络</a></li>
+				<li><a href="http://www.jd.com/">京东商城</a></li>
+			</ul>
+		</div>
+		<div class="col-md-4 footer_of_3">
+			<h4>来自<a href="appraise.html"/>评价</a></h4>
+			<div class="blog_list">
+				<div class="col-md-3 f_pic">
+					<a href="appraise.html"><img src="images/blog_pic1.jpg" alt="" class="img-responsive"/></a>	
+				</div>
+				<div class="col-md-9 f_text">
+					<a href="appraise.html"><p>直通车服务效果明显</p></a>
+					<span>24, january 2014</span>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="blog_list">
+				<div class="col-md-3 f_pic">
+					<a href="appraise.html"><img src="images/blog_pic2.jpg" alt="" class="img-responsive"/></a>
+				</div>
+				<div class="col-md-9 f_text">
+					<a href="appraise.html"><p>最重要的是选择可靠的服务商</p></a>
+					<span>17, March 2014</span>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+<div class="footer1_bg"><!-- start footer1 -->
+<div class="container">
+	<div class="footer1">
+		<div class="copy pull-left">
+			<p class="link">Copyright &copy; 2014.Company name All rights reserved.</p>
+		</div>
+		
+		<div class="clearfix"></div>
+	</div>
+</div>
+</div>
+
+
+</body>
+</html>
