@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>Bootstrap——来自《前端养成记》 | 白</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="web,bootstrap," />
+  
+
+  <meta name="description" content="逐行阅读 Bootstrap 源码
+
+前言
+Bootstrap是我接触前端开发时学习的第一个 CSS 框架，也是第一个完整看完文档的开源项目。在正式和非正式项目中多次使用 Bootstrap v3，也基本了解了 Bootstrap 的优缺点、如何定制 Bootstrap 等“高阶玩法”。
+在自学前端开发的两年余时间里，裸写 CSS 代码时总能遇到一些没有见过的“古怪” CSS 语句和样式，而在使用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap——来自《前端养成记》">
+<meta property="og:url" content="http://yoursite.com/2016/07/19/Bootstrap/index.html">
+<meta property="og:site_name" content="白">
+<meta property="og:description" content="逐行阅读 Bootstrap 源码
+
+前言
+Bootstrap是我接触前端开发时学习的第一个 CSS 框架，也是第一个完整看完文档的开源项目。在正式和非正式项目中多次使用 Bootstrap v3，也基本了解了 Bootstrap 的优缺点、如何定制 Bootstrap 等“高阶玩法”。
+在自学前端开发的两年余时间里，裸写 CSS 代码时总能遇到一些没有见过的“古怪” CSS 语句和样式，而在使用">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/587038-726efadda7ef18df.png">
+<meta property="og:image" content="http://odx25j0zp.bkt.clouddn.com/587038-9439bb9cb31c555f.png">
+<meta property="og:updated_time" content="2016-09-24T08:49:18.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bootstrap——来自《前端养成记》">
+<meta name="twitter:description" content="逐行阅读 Bootstrap 源码
+
+前言
+Bootstrap是我接触前端开发时学习的第一个 CSS 框架，也是第一个完整看完文档的开源项目。在正式和非正式项目中多次使用 Bootstrap v3，也基本了解了 Bootstrap 的优缺点、如何定制 Bootstrap 等“高阶玩法”。
+在自学前端开发的两年余时间里，裸写 CSS 代码时总能遇到一些没有见过的“古怪” CSS 语句和样式，而在使用">
+<meta name="twitter:image" content="http://odx25j0zp.bkt.clouddn.com/587038-726efadda7ef18df.png">
+
+  
+
+  
+    <link rel="icon" href="http://odx25j0zp.bkt.clouddn.com/logo.jpg">
+  
+
+  <link href="/css/styles.css?v=028c63b1" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?82ac814ff3461dc6fde6b56598595c92";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#undefined"><span class="toc-text">逐行阅读 Bootstrap 源码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">正文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Normalize.css 样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">HTML5 Boilerplate 样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">Bootstrap 样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-text">难点</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-Bootstrap" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">Bootstrap——来自《前端养成记》</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.07.19</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Bai</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/Bootstrap/">Bootstrap</a>
+  </span>
+
+
+
+      
+
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1>逐行阅读 Bootstrap 源码</h1>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/587038-726efadda7ef18df.png" alt="enter image description here"></p>
+<h2>前言</h2>
+<p><strong><em>Bootstrap</em></strong>是我接触前端开发时学习的第一个 CSS 框架，也是第一个完整看完文档的开源项目。在正式和非正式项目中多次使用 Bootstrap v3，也基本了解了 Bootstrap 的优缺点、如何定制 Bootstrap 等“高阶玩法”。</p>
+<p>在自学前端开发的两年余时间里，裸写 CSS 代码时总能遇到一些没有见过的“古怪” CSS 语句和样式，而在使用 Bootstrap 时并不会出现此类问题，遂决定阅读 Bootstrap 项目中 CSS 部分的源码，看看到底是什么在“扰乱”开发者的视线，而 Bootstrap 为开发者提高效率做了哪些有趣的事情。</p>
+<h2>说明</h2>
+<ul>
+<li>本博文内容基于 Bootstrap <a href="http://getbootstrap.com/" target="_blank" rel="external">v3.3.7</a>。按照 <code>Bootstrap.css</code> 文件从上到下的顺序逐行进行阅读；</li>
+<li>博文标题中的“<strong><em>逐行阅读 Bootstrap 源码</em></strong>”，是指逐行阅读生成的 <code>Bootstrap.css</code> 文件代码，并非阅读 Bootstrap 项目构建前的原始文件代码，诸如 LESS 文件代码、JavaScript 代码等；</li>
+<li>本博文并不涉及 Bootstrap 项目中的 JavaScript 部分；</li>
+<li>以下遴选出来的 CSS 属性或语句，是基于本人现有水平进行挑选的，基本放弃阅读和理解兼容旧版 IE 浏览器的 hack 代码；</li>
+<li>本文不适合 CSS 初学者，仅作为个人备忘录。</li>
+</ul>
+<h2>正文</h2>
+<p>由于 <code>Bootstrap v3</code> 参考了开源项目 <code>Normalize.css</code> 和 <code>HTML5</code> Boilerplate 的部分代码；使用 <code>CSS</code> 预处理语言 LESS 编写；使用 Grunt 构建；构建生成的 <code>Bootstrap.css</code> 文件从上到下分为三个部分的代码：</p>
+<ol>
+<li>参考 Normalize.css 的代码；</li>
+<li>参考 HTML5 Boilerplate 的代码；</li>
+<li>Bootstrap v3 自身的代码。</li>
+</ol>
+<h2>Normalize.css 样式</h2>
+<ul>
+<li><code>text-size-adjust: 100%；</code>：使得没有针对移动小屏幕设备进行页面（宽度）优化的网站的字体，得以在小屏幕上进行缩放（一般为放大），并且不会出现横向滚动条。
+*<code>vertical-align: baseline;</code>：定义行内元素或 table cell 的垂直对齐方式。
+*<code>audio:not([controls])</code> 选择器：选择不带 controls 属性的 audio 元素。
+*<code>svg:not(:root)</code>选择器：其实 Normalize.css 作者的意思是选择 HTML 页面内的 SVG 元素。使用了<code>:not(:root)</code> 排除掉非根元素的 SVG 是因为 SVG 在某些文档内可以作为根元素（也就是说这些文档其实并不是 HTML 文档），所以要排除掉。</li>
+<li><code>box-sizing: content-box;</code>：使用 <code>content-box</code> 作为盒模型尺寸，也就是在写一个盒模型大小时，边框宽度不包含在盒模型大小内。也就是假如该盒模型 <code>width: 100px;</code>、<code>border: 10px;</code>，其实际宽度就是 10px（左边框宽度） + 100px（盒模型宽度） + 10px（右边框宽度） = 120px（总宽度）。</li>
+<li><code>appearance: button;</code>：将元素的表现形式设置为 button 的样式（自带一些按钮的状态）。</li>
+<li><code>button::-moz-focus-inner { padding: 0; border: 0; }</code>：针对 Firefox，移除掉 Firefox 按钮 focus 状态下的按钮内边框和间距。
+*<code>::-webkit-inner-spin-button</code> 和<code>::-webkit-outter-spin-button</code> 伪元素：一般配合数字输入框表单元素使用，用于设置数字增减的按钮的样式。</li>
+</ul>
+<h2>HTML5 Boilerplate 样式</h2>
+<ul>
+<li><code>a[href]:after { content: &quot; (&quot; attr(href) &quot;)&quot;; }</code>：在 a 标签的链接后插入 href 属性中的 URL。</li>
+<li><code>p, h2, h3 { orphans: 3; widows: 3; }</code>：当一段块级文字，例如一个段落，跨越两个或多个打印页面，通常而言，这段块级文字只会在页面的最后或开始的地方，显示一到两行内容。<code>widows</code> 和<code>orphans</code> 就是分别用来设置打印页前后可以显示的块级文字段落的行数的。换言之，如果一个打印页面内容不下设置的行数，该块级文字就会往后或往前一页显示。</li>
+<li><code>page-break-after: avoid;</code>：禁止在当前元素后立即换页，也就是当前元素后面一定得跟着一点内容。</li>
+</ul>
+<h2>Bootstrap 样式</h2>
+<ul>
+<li><code>.sr-only { clip: rect(0, 0, 0, 0); }</code>：.sr-only 这个类主要为了增强网站的无障碍性（可访问性）。假设在一个导航栏的 DOM 结构的主要内容之前，有很多超链接，可以使用<code>.sr-only</code>类在视觉上隐藏掉这些超链接。也就是说，为了保证视力障碍用户对网站的正常使用，通常需要在导航栏的主体内容之前，增加一些网页阅读器（朗读器）能够很好识别的内容和结构，以提高视力障碍者对网站结构的理解，而这些内容，恰恰是视力正常用户所不需要的，所以可以使用 <code>.sr-only</code>类在视觉上隐藏掉这些内容，仅供网页阅读器（朗读器）正常辨别即可。语句 <code>clip: rect(0, 0, 0, 0);</code> 用于隐藏添加了 <code>.sr-only</code> 类的 label 标签。</li>
+<li><code>.sr-only-focusable</code> 类：确保一旦超链接被<code>:focus 或者 :active</code> 了，也就是超链接被激活了，就会在视觉上可见。用于照顾使用键盘进行网页导航的用户，也是增强网站的无障碍性（可访问性）的手段之一。</li>
+<li><code>white-space: nowrap;</code> 语句：描述了如何处理空格（包括换行符、空格和制表符），详情见下图：</li>
+</ul>
+<p><img src="http://odx25j0zp.bkt.clouddn.com/587038-9439bb9cb31c555f.png" alt="enter image description here"></p>
+<ul>
+<li><code>border-collapse: collapse;</code>：为表格设置合并边框。</li>
+<li><code>text-overflow: ellipsis; white-space: nowrap;</code>：组合起来意思就是：超出盒模型宽度的段落不换行，并以 ... 显示。</li>
+<li><code>cursor: help;</code>：鼠标指针变成帮助图标。</li>
+<li><code>box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .25);</code>：盒模型内阴影，向右偏移 0px，向上偏移 1px，阴影扩展 0px，背景色为不透明度 75% 的黑色。</li>
+<li><code>word-break: break-all;</code>：word-break 属性主要用于设置拉丁字符（英文、拉丁文等）与非拉丁字符（也就是 CJK，Chinese、Japanese、Korean，中文、日文、韩文）之间的换行规则。word-break 使得换行可以发生在任意两个字符之间；此选型更多地用于大篇幅非拉丁字符与少量拉丁字符组成的元素中，以便文字更好地分布。也就是说：如果元素内有大量英文，不建议使用这个选项，因为有很大几率会在一个英文单词的某两个字母中进行段落换行。这对于拉丁字符而言，是一个很糟糕的体验（因为拉丁字符的换行通常发生在音节、空格处）。</li>
+</ul>
+<p><strong><em>W3C 规范中关于 word-break 属性的解读：<a href="https://www.w3.org/TR/css-text-3/#word-break-property" target="_blank" rel="external">word-break-property</a></em></strong></p>
+<ul>
+<li>word-wrap: break-word;：word-wrap 是旧标准的遗留产物，新标准中的属性叫 overflow-wrap。word-wrap 属性用于规定当一长串不可换行/断句的字符串由于太长，不能放入一个给定宽度的容器内时，用户代理（浏览器）是否可以在一个单词的内部进行断句以避免产生字符溢出。只有 white-space 设置为允许 wrapping 时，word-wrap 才会生效。</li>
+</ul>
+<p><strong><em>一般而言，<code>word-break: break-all;</code> 和 <code>word-break: break-all;</code>会一起使用。</em></strong></p>
+<ul>
+<li>
+<p><code>touch-action: manipulation;</code>：touch-action 用于指定某个给定的区域是否允许用户操作，以及如何响应用户操作（比如划动、缩放等）。<code>manipulation</code>：浏览器只允许进行滚动和持续缩放操作，任何其它被auto值支持的行为不被支持。</p>
+</li>
+<li>
+<p><code>background-clip: padding-box;</code>：background-clip 设置元素的背景（背景图片或颜色）是否延伸到边框下面。padding-box：边框下面没有背景，即背景延伸到内边距外沿。</p>
+</li>
+<li>
+<p><code>.btn-group &gt; .btn:not(:first-child):not(:last-child):not(.dropdown-toggle)</code> 选择器：选择的是<code>.btn-group</code> 的直接 .btn 子类，它不能是 <code>.btn-group</code> 下的第一个 .btn，也不能是最后一个 .btn，同时不带有<code>.dropdown-toggle</code> 类。由此可见，CSS 伪元素或者伪类可以通过连写的方式来进行条件式选择/排除。</p>
+</li>
+<li>
+<p><code>table-layout: fixed;</code>：table-layout 属性定义了表格布局算法，用于对表格中单元格、行和列进行布局。fixed 选型定义了：表格和列的宽度通过表格的宽度来设置，某一列的宽度仅由该列首行的单元格决定。在当前列中，该单元格所在行之后的行并不会影响整个列宽。
+*<code>:empty</code>伪类选择器：匹配没有任何子元素（包括 text 节点）的元素。
+*<code>text-align: start;</code>：一个实验性质的语句。如果内容方向是从左至右，则等于 text-align: left;，反之则为 text-align: right;。</p>
+</li>
+</ul>
+<h2>总结</h2>
+<p>遇到不懂的，建议在 MDN 上查询：https://developer.mozilla.org/zh-CN/docs/Web/CSS
+若想了解更精确的定义，建议浏览 W3C 标准文档：https://www.w3.org/TR</p>
+<h2>难点</h2>
+<p>其实要构建 Bootstrap v3 这样的大型开源项目，真正的难点在于：</p>
+<p><strong><em>如何进行规划；</em></strong>
+<strong><em>如何优雅地构建；</em></strong>
+<strong><em>如何高效地沟通、协作、配合。</em></strong></p>
+<p>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;https://music.163.com/outchain/player?type=2&amp;id=21223795&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;</p>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">联系@白</span>
+      <div class="donation-body">
+        <div class="tip text-center">联系@白</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/wechat.jpg" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="http://odx25j0zp.bkt.clouddn.com/qq.jpg" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+  <section class="duoshuo-comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="http://yoursite.com/2016/07/19/Bootstrap/index.html" data-title="Bootstrap——来自《前端养成记》" data-url="http://yoursite.com/2016/07/19/Bootstrap/index.html"></div>
+    <!-- 多说评论框 end -->
+  </section>
+
+
+
+
+  <script type="text/javascript">
+  var duoshuoQuery = {short_name:"Swift3t"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
